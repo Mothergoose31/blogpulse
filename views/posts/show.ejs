@@ -1,20 +1,19 @@
 <h1><%=post.title%><small>by <%= post.author.name%></small></h1>
 <p>
-    <%=moment(post.createdAt).calendar()%>
+    <%= moment(post.createdAt).calendar() %>
 </p>
 <p>
-    <%= post.content%>
+    <%= post.content %>
 </p>
 <hr/>
-<form method='POST' action="/posts/<%= post.id %>%>/comments" >
-<input type="text" name="name"placeholder="enter name "><br/>
-<input type="text" name="body" placeholder = 'Enter your comment here'> <br/>
-
-<input type="submit" value='comment'>
+<form method='POST' action="/posts/<%= post.id %>/comments" >
+    <input type="text" name="name"placeholder="enter name "><br/>
+    <input type="text" name="body" placeholder='Enter your comment here'> <br/>
+    <input type="submit" value='comment'>
 </form>
 <hr/>
-<%=post.comment.ForEach(function (comment) { %>
+<% post.comments.forEach( function(comment) { %>
     <p>"<%= comment.body %>"-<%=comment.name%></p>
-
 <% })%>
+
 <a href="/">&larr; Back Home</a>
